@@ -1,12 +1,12 @@
-package com.lee.li.lee;
+package com.lee.application;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class LeeApplication {
+public class Application {
 
 	public static void main(String[] args) {
-		SpringApplication.run(LeeApplication.class, args);
+		SpringApplication.run(Application.class, args);
 	}
 }

@@ -6,8 +6,11 @@
 	<groupId>com.lee.li</groupId>
 	<artifactId>lee</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
+    <modules>
+        <module>cacheService</module>
+    </modules>
 
-	<packaging>pom</packaging>
+    <packaging>pom</packaging>
 
 	<name>lee</name>
 	<description>my frame work</description>

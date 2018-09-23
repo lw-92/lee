@@ -57,7 +57,8 @@ public class RediTests {
         redisTemplate.opsForHash().putAll("mymap",map2);
 
         final Map<Object, Object> mymap = redisTemplate.opsForHash().entries("mymap");
-
+        Boolean aBoolean = redisTemplate.opsForHash().hasKey("mymap", "key9");
+        System.out.println(aBoolean);
 
     }
 

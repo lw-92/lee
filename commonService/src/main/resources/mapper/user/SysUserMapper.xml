@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lee.application.service.user.mapper.SysUserMapper">
+  <select id="selectTenantPageVo" resultType="com.lee.application.service.mapper.user.entity.SysUser">
+     SELECT *  FROM sys_user WHERE tenant_id=#{tenantId}
+  </select>
+    <select id="selectTest" resultType="java.lang.Integer">
+        SELECT count(*)  FROM sys_user
+    </select>
+</mapper>

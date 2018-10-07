@@ -1,16 +1,14 @@
 package com.lee.application.user.controller;
 
 
-import com.lee.application.user.model.User;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.lee.application.model.CommonHttpEntity;
+import com.lee.application.service.user.entity.SysUser;
+import com.lee.application.service.user.service.ISysUserService;
 import io.swagger.annotations.ApiOperation;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
-
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Map;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @author wei.li
@@ -19,20 +17,27 @@ import java.util.Map;
  */
 @RestController
 @RequestMapping("/user")
-
 public class UserController {
-    // 创建线程安全的Map
 
-    @ApiOperation(value = "获取用户列表", notes = "")
-    @RequestMapping(value = "/{id}",method = RequestMethod.DELETE)
-    public void deleteUser(@PathVariable("id") String id) {
+    @Autowired
+    private ISysUserService userService;
 
+    @ApiOperation(value = "add mapper.user", notes = "")
+    @RequestMapping(value = "/add", method = RequestMethod.POST)
+    public CommonHttpEntity addUser(@RequestBody SysUser user) {
+        final CommonHttpEntity commonHttpEntity = new CommonHttpEntity();
+        userService.saveUser(user);
+        return commonHttpEntity;
     }
 
-    @ApiOperation(value = "获取用户列表", notes = "")
-    @RequestMapping(value = "/{id}",method = RequestMethod.POST)
-    public void addUser() {
-
+    @ApiOperation(value = "add mapper.user", notes = "")
+    @RequestMapping(value = "/get/{tenantId}", method = RequestMethod.GET)
+    public CommonHttpEntity< IPage<SysUser>> selectByTenant(@PathVariable long tenantId) {
+        final CommonHttpEntity commonHttpEntity = new CommonHttpEntity();
+        Page page=new Page(1,10);
+        final IPage<SysUser> sysUserIPage = userService.selectTenantPageVo(page, tenantId);
+        commonHttpEntity.setData(sysUserIPage);
+        return commonHttpEntity;
     }
 
 }

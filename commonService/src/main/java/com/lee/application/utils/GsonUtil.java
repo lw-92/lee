@@ -1,4 +1,4 @@
-package JsonUtils;
+package com.lee.application.utils;
 
 import com.google.gson.Gson;
 

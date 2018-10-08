@@ -10,7 +10,8 @@
         <module>cacheService</module>
         <module>commonService</module>
 		<module>tools</module>
-	</modules>
+        <module>services</module>
+    </modules>
 
     <packaging>pom</packaging>
 

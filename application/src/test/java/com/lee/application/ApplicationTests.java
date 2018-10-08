@@ -1,6 +1,5 @@
 package com.lee.application;
 
-import com.lee.application.user.mapper.TestMapper;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,17 +13,10 @@ public class ApplicationTests {
     @Autowired
 	private StringRedisTemplate template;
 
-    @Autowired
-	private TestMapper testMapper;
-
 	@Test
 	public void redisHealthCheck() {
 		template.opsForValue().set("111","111",6000);
 	}
 
-	@Test
-	public void mysqlHealthCheck() {
-		final int byName = testMapper.findByName();
-		System.out.println(byName);
-	}
+
 }

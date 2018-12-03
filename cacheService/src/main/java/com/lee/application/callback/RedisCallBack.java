@@ -7,5 +7,5 @@ package com.lee.application.callback;
  */
 public interface RedisCallBack<T> {
 
-    public <T>RedisData<T> execute(String str);
+    public <T> RedisData<T> execute(String str);
 }

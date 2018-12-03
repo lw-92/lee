@@ -18,7 +18,6 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/user")
 public class UserController {
-    // 创建线程安全的Map
     @Autowired
     private UserMapper userMapper;
 
@@ -29,10 +28,14 @@ public class UserController {
     }
 
     @ApiOperation(value = "获取用户列表", notes = "")
-    @RequestMapping(value = "/{id}",method = RequestMethod.POST)
+    @RequestMapping(value = "/{id}",method = RequestMethod.GET)
     public void addUser() {
         User user = userMapper.selectByPrimaryKey(222433982057418752L);
         System.out.println(user.getCreateTime());
     }
 
+    public static void main(String[] args) {
+        String str="二";
+        System.out.println(str.getBytes().length);
+    }
 }

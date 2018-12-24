@@ -1,7 +1,9 @@
 package com.lee.application;
 
+import com.lee.application.JsonModel.JsonUtil;
 import com.lee.application.callback.RedisCallBack;
 import com.lee.application.callback.RedisData;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
@@ -17,22 +19,24 @@ import java.util.concurrent.Executors;
 public class CacheServiceImpl implements  CacheService{
 
     @Autowired
-    private RedisTemplate<String, String> redisTemplate;
+    private RedisTemplate<String,String> stringRedisTemplate;
+
     @Override
     public boolean addStringCache(String key, String value, long ttl) {
         if(ttl>0){
-            redisTemplate.opsForValue().set(key,value,ttl);
+            stringRedisTemplate.opsForValue().set(key,value,ttl);
         }else{
-            redisTemplate.opsForValue().set(key,value);
+            stringRedisTemplate.opsForValue().set(key,value);
         }
-        /*Executors.newFixedThreadPool(1).submit();*/
-
-
         return true;
     }
 
-    public <T>RedisData<T> getString(RedisCallBack<T> callBack, String key){
-        final String s = redisTemplate.opsForValue().get(key);
-        return  callBack.execute(s);
+    @Override
+    public <T> T getStringAndConvert(String s, Class<T> clazz) {
+        String s1 = stringRedisTemplate.opsForValue().get(s);
+        if(StringUtils.isNotEmpty(s1)){
+            return JsonUtil.convertString2Obj(s1,clazz);
+        }
+        return null;
     }
 }

@@ -9,5 +9,6 @@ public interface CacheService {
 
     boolean addStringCache(String key,String value,long ttl);
 
+    <T> T getStringAndConvert(String s, Class<T> clazz);
 
 }

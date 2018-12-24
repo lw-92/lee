@@ -11,13 +11,22 @@
         <module>commonService</module>
 		<module>tools</module>
         <module>services</module>
+        <module>springannotation</module>
     </modules>
 
     <packaging>pom</packaging>
 
 	<name>lee</name>
 	<description>my frame work</description>
-
+    <dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.apache.commons</groupId>
+				<artifactId>commons-lang3</artifactId>
+				<version>3.8</version>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

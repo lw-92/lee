@@ -1,7 +1,9 @@
-package test.IDao;
+package com.lee.application.user.dao;
 
-import test.domain.User;
+import com.lee.application.user.domain.User;
+import org.apache.ibatis.annotations.Mapper;
 
+@Mapper
 public interface UserMapper {
     int deleteByPrimaryKey(Long id);
 

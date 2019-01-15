@@ -1,8 +1,8 @@
 package com.lee.application.user.controller;
 
 
-import com.lee.application.dao.UserMapper;
-import com.lee.application.domain.User;
+import com.lee.application.user.dao.UserMapper;
+import com.lee.application.user.domain.User;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -24,14 +24,15 @@ public class UserController {
     @ApiOperation(value = "获取用户列表", notes = "")
     @RequestMapping(value = "/{id}",method = RequestMethod.DELETE)
     public void deleteUser(@PathVariable("id") String id) {
-
+        System.out.println("q111111");
     }
 
     @ApiOperation(value = "获取用户列表", notes = "")
     @RequestMapping(value = "/{id}",method = RequestMethod.GET)
     public void addUser() {
         User user = userMapper.selectByPrimaryKey(222433982057418752L);
-        System.out.println(user.getCreateTime());
+        if(user!=null) System.out.println(user.getCreateTime());
+
     }
 
     public static void main(String[] args) {
